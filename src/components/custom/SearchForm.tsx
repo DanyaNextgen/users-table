@@ -11,7 +11,7 @@ import { Button } from "../ui/button";
 import { User } from "@/types";
 
 interface SearchFormProps {
-	users: Array<User>;
+	users: Array<User>; 
 	setUsers: (array: any) => void;
 }
 
@@ -23,7 +23,7 @@ const SearchForm: React.FC<SearchFormProps> = ({ users, setUsers }) => {
 			user.name.toLowerCase().includes(search.toLowerCase().trim())
 		);
 
-		setUsers(filtered);
+		setUsers(search ? filtered : users)
 	}, [search]);
 
 	return (
@@ -37,7 +37,7 @@ const SearchForm: React.FC<SearchFormProps> = ({ users, setUsers }) => {
 					<Input
 						placeholder="seach"
 						name="search"
-						onKeyUp={(e:any) => setSearch(e.target.value)}
+						onKeyUp={(e: any) => setSearch(e.target.value)}
 					/>
 					<Button variant="outline">search</Button>
 				</form>
